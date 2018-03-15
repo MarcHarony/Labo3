@@ -39,12 +39,18 @@ while True:
                 elif rcvData == "chat" :
                     if socket.gethostbyaddr(addr[0]) in reguserlist :
                         user.send("chat openned".encode())
-                        os.system("chat_V1.py")
                     else :
                         user.send("not connected".encode())
-                elif rcvData == "connection" :
+                elif "connection" in rcvData and "de" not in rcvData :
                     user.send("well connected".encode())
                     reguserlist.append(socket.gethostbyaddr(addr[0]))
+                    tokens = rcvData.split(' ')
+                    i=1
+                    pseudo=""
+                    while i<len(tokens) :
+                        pseudo += tokens[i] + ' '
+                        i+=1
+                    print(pseudo)
                 elif rcvData == "deconnection" :
                     user.send("well deconnected".encode())
                     reguserlist.remove(socket.gethostbyaddr(addr[0]))
