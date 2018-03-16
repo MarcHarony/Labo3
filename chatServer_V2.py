@@ -12,6 +12,7 @@ print("Ecoute sur {}".format(port))
 
 reguser = []
 reguserlist = []
+pseudoList = []
 
 while True:
     waitingConnections, wlist, xlist = select.select([s],[], [], 0.05)
@@ -33,8 +34,10 @@ while True:
                         user.send("none".encode())
                     else :
                         list2str = ""
+                        j=0
                         for users in reguserlist :
-                            list2str += str(users) + "\n"
+                            list2str += str(users) + " : " + pseudoList[j] + "\n"
+                            j+=1
                         user.send(list2str.encode())
                 elif rcvData == "chat" :
                     if socket.gethostbyaddr(addr[0]) in reguserlist :
@@ -50,7 +53,9 @@ while True:
                     while i<len(tokens) :
                         pseudo += tokens[i] + ' '
                         i+=1
-                    print(pseudo)
+                    print("pseudo : " + pseudo)
+                    pseudoList.append(pseudo)
+                    
                 elif rcvData == "deconnection" :
                     user.send("well deconnected".encode())
                     reguserlist.remove(socket.gethostbyaddr(addr[0]))
