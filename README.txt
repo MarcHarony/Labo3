@@ -65,6 +65,11 @@ Notes :
 	informations dans la liste de clients connectés. La prochaine version prendra en
 	charge le problème.
 
+	- La gestion des pseudos n'est pas tout à fait au point
+
+	- La prochaine version utilisera des objets clients pour sotcker les données
+	de ces derniers
+
 Description des protocoles :
 
 connection "clientServer - chatServer" : protocole TCP. Le serveur est capable d'écouter les 
@@ -74,4 +79,3 @@ tour de rôle les requêtes des clients.
 
 connection "chat-chat" : protocole UDP. Le client envoie et reçoit des données sans avoir
 besoin de se connecter.
-

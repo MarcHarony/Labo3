@@ -58,7 +58,17 @@ while True:
                     
                 elif rcvData == "deconnection" :
                     user.send("well deconnected".encode())
+                    k=0
+                    pseudoIndex = 0
+                    for users in reguserlist :
+                        if socket.gethostbyaddr(addr[0]) == users :
+                            pseudoIndex =k
+                        else :
+                            k+=1
                     reguserlist.remove(socket.gethostbyaddr(addr[0]))
+                    pseudoList.remove(pseudoList[k])
+                    print(pseudoList)
+                    
                 else :
                     user.send(b'unknown command')
             except OSError :
