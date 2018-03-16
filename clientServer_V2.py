@@ -18,6 +18,6 @@ while True:
     recvdata = t.recv(1024)
     print(recvdata.decode())
     if recvdata.decode() == "chat openned" :
-        os.system("chat_V1.py")
+        os.system("chat_V2.py")
 
 t.close()
